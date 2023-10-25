@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <!-- link icon header -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- link css -->
+    <link rel="stylesheet" href="./CSS/index.css">
+   <!-- link boostrap 5 -->
+   <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="icon" href="img/favicon (1).ico">
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* header{
+        position: fixed;
+        top: 0;
+        left: 0;
+    } */
+    .container-header{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        padding: 0 10px;
+        position: fixed;
+        top: 0;
+        background-color: white;
+        z-index: 99;
+    }
+    /* .nav {
+        margin-top: 100px;
+    } */
+    .nav>li{   /* Css này được áp dụng cho các thẻ <li> nằm ngay dưới thẻ <ul> có class là nav */
+        float: left; /* sẽ giúp các phần tử nằm trên cùng 1 hàng */
+        margin-right: 25px; /* sẽ giúp các phần tử cách nhau 15px về phía bên phải. */ 
+    }
+    .nav>li>a{
+        text-transform: uppercase;
+        color: #222222;
+        text-decoration: none; /* xoá gạch chân */
+    }
+    .nav li{
+        list-style: none;/* xoá dấu chấm đầu thẻ li */
+        position: relative;
+    }
+    .nav li a{
+        padding: 10px;
+        line-height: 20px;/* àm chiều cao của dòng tăng lên 20px giúp text nằm giữ dòng */
+        display: inline-block;/* sẽ giúp khóa hiển thị trên dòng, giúp các thuộc tính khác hoạt động tốt. */
+        text-decoration: none; /* xoá gạch chân */
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .nav .sub-menu{
+        display: none ;
+        /* display: block ; */
+        position: absolute;
+        top: 5px;
+        left: 100%;
+        width: 200px;
+        background-color: #eee;
+        padding: 5px 20px;
+       
+    }
+    .nav li:hover>.sub-menu{
+        display: block;  
+    }
+    .nav>li>.sub-menu{
+        top: 42px;
+        left: 0;
+        text-decoration: none;
+    }
+    .nav .sub-menu1{
+        display: none ;
+        position: absolute;
+        top:0;
+        left: 100%;
+        width: 250px;
+        background-color: #eee;
+        padding: 5px 20px;
+    }
+    .nav>li>.sub-menu1{
+        top: 40px;
+        left: 0;
+    }
+    .nav li:hover>.sub-menu1{
+        display: block;
+    }
+    .menu{
+        padding: 0 15px 0 0;
+    }
+    .menu a{
+        position: relative;
+        font-weight: 500;
+    }
+    
+    .nav > li:hover {
+        border-bottom: 2px solid #333;
+    }
+
+    .width-2 {
+        width: 250px !important;
+    }
+    .header-right{
+        width: 600px;
+        height: 40px;
+        display: flex
+    }
+    .icon{
+        position: relative;
+        display: flex;
+        margin-left: 20px;
+    }
+    .search{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    #search{
+        /* border: none; */
+        /* outline: none; */
+        border-radius: 10px;
+        height: 100%;
+        width: 210px;
+        font-size: 16px;
+    }
+    .icon-search{
+        margin-left: 50px;
+        cursor: pointer;
+    }
+    .icon-search i{ 
+        margin-left: 25px;
+    }
+    .icon-use{
+        margin-left: 50px;
+        cursor: pointer;
+
+    }
+    .icon-use a{
+        color: #222222;
+        text-decoration: none;
+    }
+    .icon-use i{
+        margin-left: 35px;
+    }
+    .icon-cart{
+        margin-left: 50px;
+        cursor: pointer;
+    }
+    .icon-cart a{
+        text-decoration: none;
+        color: #222222;
+
+    }
+    .icon-cart i{
+        margin-left: 30px;
+
+    } 
+    span{
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* dùng cho Function showSearch() */
+    .hidden {
+        opacity: 0;
+    }
+
+
+    /* css main */
+    .main {
+        margin-top: 70px;
+    }
+    /* .main .banner{
+        background-image: url(./img/index-banner/home_slider_image_1.webp);
+        background-size: cover;
+        width: 100%;
+        height: 637.46px;
+        position: relative
+    } */
+    /* swiper */
+    .swiper {
+      width: 100%;
+      height: 637.46px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .item {
+        /* background-color: gold;
+        border: 1px solid gray; */
+        min-height: 50vw;
+    }
+    .content{
+        display: grid;
+        grid-template-areas: 
+        "p1 p2 p3"
+        "p4 p5 p6";
+        grid-template-rows: 50vw 50vw  ;
+        grid-template-columns: 33vw 33vw 33vw;
+        margin-top: 5px ;
+    }
+    .p1{
+        grid-area: p1;
+        /* background-color: aqua; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_1.webp);
+        background-size: cover;
+        position: relative;
+    }
+    .p1_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p1 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p1 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+    .p2{
+        grid-area: p2;
+        /* background-color: rebeccapurple; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_2.webp);
+        background-size: cover;
+        position: relative;
+    }
+    .p2_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p2 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p2 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+    .p3{
+        grid-area: p3;
+        /* background-color: red; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_3.webp);
+        background-size: cover;
+        position: relative;
+
+    }
+    .p3_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p3 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p3 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+    .p4{
+        grid-area: p4;
+        /* background-color: aquamarine; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_4.webp);
+        background-size: cover;
+        position: relative;
+    }
+    .p4_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p4 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p4 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+    .p5{
+        grid-area: p5;
+        /* background-color: darkblue; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_5.webp);
+        background-size: cover;
+        position: relative;
+    }
+    .p5_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p5 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p5 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+    .p6{
+        grid-area: p6;
+        /* background-color: yellow; */
+        margin-right: 3px;
+        margin-bottom: 3px;
+        background-image: url(./img/index-banner/home_banner_image_6.webp);
+        background-size: cover;
+        position: relative;
+    }
+    .p6_content{
+        padding: 15px 15px 25px 30px;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+    .p6 span{
+        color: #fff;
+        font-size: 35px;
+
+    }
+    .p6 a{
+        color:#fff ;
+        text-decoration: none;
+    }
+
+    .banner_sale{
+       
+        height: 637.46px;
+        width: 100vw;
+        background-image: url(./img/index-banner/home_banner_sale_image.webp);
+        background-size: cover;
+    }
+
+    .section{
+        height: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .section_title h2{
+        font-size: 32px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .blog{
+        display: flex;
+    }
+    .blog_1 {
+        width:50vw;
+        height: 31vw;
+        background-image: url(./img/index-banner/home_banner_blog_1.webp);
+        background-size: cover;
+    }
+    .blog_2{
+        width:50vw;
+        height: 31vw;
+        background-image: url(./img/index-banner/home_banner_blog_2.webp);
+        background-size: cover;
+        margin-left: 3px;
+    }
+
+    
+    /*footer*/
+    footer{
+        cursor: pointer;
+    }
+    .text-white{
+        text-decoration: none;
+    }
+
+
+</style>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="container-header">
+             <!-- menu -->
+            <div class="menu">
+                <ul class="nav">
+                    <li><a href="./collections/collection.html" class="nav-word">Bộ sưu tập</a>
+                        
+                    </li>
+                    <li><a href="#" class="nav-word">Sản phẩm</a>
+                        <ul class="sub-menu" id="sub-menu">
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-word">Sản phẩm mới</a></li>
+                    <li><a href="./bill.html" class="nav-word">Đơn hàng</a>
+                    </li>
+                </ul>
+            </div> 
+
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./img/logo.webp" alt="">
+                </a>
+            </div>
+
+            <div class="header-right" id="a">
+                <div class="search">
+                    <input type="text" id="search" class="hidden">
+                    <div class="icon-search" onclick="showSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i> <br> 
+                        <span >TÌM KIẾM</span>
+                    </div>
+
+                    <div class="icon-use" id="icon-use">
+                        <!-- <a class="login-user" href="./login.html">
+                            <i class="fa-solid fa-user"></i> <br>
+                            <span>ĐĂNG NHẬP</span>
+                        </a> -->
+                    </div>
+                    
+                    <div class="icon-cart">
+                        <a href="../cardOrder.html">
+                            <i class="fa-solid fa-bag-shopping"><span id="total-order"></span></i> 
+                            <br>
+                            <span>GIỎ HÀNG</span>
+                        </a>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main>
+        <div class="main">
+            <div class="banner">
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"><img src="./img/index-banner/home_slider_image_1.webp" alt=""></div>
+                      <div class="swiper-slide"><img src="./img/index-banner/home_slider_image_2.webp" alt=""></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+            <div class="content">
+                <div class="p1">
+                    <div class="p1_content">
+                        <span>Denim</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="p2">
+                    <div class="p2_content">
+                        <span>Midi dress</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                    
+                </div>
+                <div class="p3">
+                    <div class="p3_content">
+                        <span>Top</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="p4">
+                    <div class="p4_content">
+                        <span>Pants</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="p5">
+                    <div class="p5_content">
+                        <span>New collection</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="p6">
+                    <div class="p6_content">
+                        <span>Short</span> <br>
+                        <a href="#">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="banner_sale">
+            </div>
+            <div class="section">
+                <div class="section_title">
+                    <h2>HIME'S BLOG</h2>
+                </div>
+            </div>
+            <div class="blog">
+                <div class="blog_1">
+                
+                </div>
+                <div class="blog_2">
+                
+                </div>
+            </div>
+        </div>
+    </main>
+   
+
+    <!--Footer  -->
+    <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #45526e"
+          
+          >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Truy cập nhanh
+            </h6>
+            <p>
+              Trang chủ
+            </p>
+            <p>Giới thiệu </p>
+            <p>Trung tâm trợ giúp</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Về HIME’S Blog</h6>
+            <p>
+              <a class="text-white">Tuyển dụng</a>
+            </p>
+            <p>
+              <a class="text-white">Điều khoản dịch vụ </a>
+            </p>
+            <p>
+              <a class="text-white">Chính sách bảo mật</a>
+            </p>
+            <p>
+              <a class="text-white">Quy trình giải quyết khiếu nại</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Về sản phẩm
+            </h6>
+            <p>
+              <a class="text-white">Hướng dẫn mua hàng</a>
+            </p>
+            <p>
+              <a class="text-white">Giao hàng & Nhận hàng</a>
+            </p>
+            <p>
+              <a class="text-white">Hướng dẫn đổi trả hàng</a>
+            </p>
+            
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h6>
+            <p><i class="fas fa-home mr-3"></i> Hotline & chat trực tuyến (24/7)</p>
+            <p><i class="fas fa-envelope mr-3"></i> himecskh@stripe-vn.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 024 6259 1551</p>
+            <p><i class="fas fa-print mr-3"></i> + 0987 769 594</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <!-- Copyright -->
+            <div class="p-3">
+              © 2023 Copyright:
+                <a class="text-white" href="#"
+                 >himevn.com</a
+                >
+            </div>
+            <!-- Copyright -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <!-- Facebook -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-twitter"></i
+              ></a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-google"></i
+              ></a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+          </div>
+          <!-- Grid column -->
+        </div>
+      </section>
+      <!-- Section: Copyright -->
+    </div>
+    <!-- Grid container -->
+  </footer>
+  <!-- Footer -->
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <!-- <script src="./js/product.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- link icon header -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- link boostrap 5 -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    />
+</head>
+<style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* header{
+        position: fixed;
+        top: 0;
+        left: 0;
+    } */
+    .container-header{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        padding: 0 10px;
+        position: fixed;
+        top: 0;
+        background-color: white;
+        z-index: 99;
+    }
+    /* .nav {
+        margin-top: 100px;
+    } */
+    .nav>li{   /* Css này được áp dụng cho các thẻ <li> nằm ngay dưới thẻ <ul> có class là nav */
+        float: left; /* sẽ giúp các phần tử nằm trên cùng 1 hàng */
+        margin-right: 25px; /* sẽ giúp các phần tử cách nhau 15px về phía bên phải. */ 
+    }
+    .nav>li>a{
+        text-transform: uppercase;
+        color: #222222;
+        text-decoration: none; /* xoá gạch chân */
+    }
+    .nav li{
+        list-style: none;/* xoá dấu chấm đầu thẻ li */
+        position: relative;
+    }
+    .nav li a{
+        padding: 10px;
+        line-height: 20px;/* àm chiều cao của dòng tăng lên 20px giúp text nằm giữ dòng */
+        display: inline-block;/* sẽ giúp khóa hiển thị trên dòng, giúp các thuộc tính khác hoạt động tốt. */
+        text-decoration: none; /* xoá gạch chân */
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .nav .sub-menu{
+        display: none ;
+        /* display: block ; */
+        position: absolute;
+        top: 5px;
+        left: 100%;
+        width: 200px;
+        background-color: #eee;
+        padding: 5px 20px;
+       
+    }
+    .nav li:hover>.sub-menu{
+        display: block;  
+    }
+    .nav>li>.sub-menu{
+        top: 42px;
+        left: 0;
+        text-decoration: none;
+    }
+    .nav .sub-menu1{
+        display: none ;
+        position: absolute;
+        top:0;
+        left: 100%;
+        width: 250px;
+        background-color: #eee;
+        padding: 5px 20px;
+    }
+    .nav>li>.sub-menu1{
+        top: 40px;
+        left: 0;
+    }
+    .nav li:hover>.sub-menu1{
+        display: block;
+    }
+    .menu{
+        padding: 0 15px 0 0;
+    }
+    .menu a{
+        position: relative;
+        font-weight: 500;
+    }
+    
+    .nav > li:hover {
+        border-bottom: 2px solid #333;
+    }
+
+    .width-2 {
+        width: 250px !important;
+    }
+    .header-right{
+        width: 600px;
+        height: 40px;
+        display: flex
+    }
+    .icon{
+        position: relative;
+        display: flex;
+        margin-left: 20px;
+    }
+    .search{
+        position: relative;
+        display: flex;
+    }
+    #search{
+        /* border: none; */
+        /* outline: none; */
+        border-radius: 10px;
+        height: 100%;
+        width: 210px;
+        font-size: 16px;
+    }
+    .icon-search{
+        margin-left: 50px;
+        cursor: pointer;
+    }
+    .icon-search i{ 
+        margin-left: 25px;
+    }
+    .icon-use{
+        margin-left: 50px;
+        cursor: pointer;
+
+    }
+    .icon-use a{
+        color: #222222;
+        text-decoration: none;
+    }
+    .icon-use i{
+        margin-left: 35px;
+    }
+    .icon-cart{
+        margin-left: 50px;
+        cursor: pointer;
+    }
+    .icon-cart a{
+        text-decoration: none;
+        color: #222222;
+
+    }
+    .icon-cart i{
+        margin-left: 30px;
+
+    } 
+    span{
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* dùng cho Function showSearch() */
+    .hidden {
+        opacity: 0;
+    }
+
+    /* css main */
+    .slider-item{
+        margin-top: 65px;
+       height: 397.91px;
+       width: 100%; 
+       background-image: url(../img/vay/banner-vay.webp);
+       background-size: cover;
+    }
+
+    /* css main */
+    .collection-body{
+        
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        /* background-color: aqua; */
+        width: 954.4px;
+        /* height: 1100px; */
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .product-item{
+        display: block;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+    .product-img{
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 12px;
+    } 
+    .product-img a img{
+        /* display: flex; */
+        width: 302.8px;
+        height: 454.32px;
+
+    }
+    .product-detail{
+       text-align: center;
+       width: 300px;
+       height: 80px !important;
+    }
+    .product-detail h3 a{
+        line-height: 1.5;
+        color: #1a1c19;
+        text-decoration: none;
+        
+        
+    }
+    .box-pro-prices{
+        text-align: center;
+    }
+    .box-pro-prices span{
+        font-size: 16px;
+    }
+
+    .pagination{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    .btn button {
+        background: #293746;
+        color: #fff;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        position: relative;
+
+    }
+    .btn button:hover {
+        background: yellow;
+        color: #293746;
+    }
+    button .fa-solid {
+        background: #293746;
+        color: #fff;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .toPrevPage{
+        outline: none; 
+        background-color: white;
+        border: 0 
+    }
+    .toNextPage{
+        outline: none; 
+        background-color: white;
+        border: 0 
+    }
+
+
+     /*footer*/
+     footer{
+        cursor: pointer;
+    }
+    .text-white{
+        text-decoration: none;
+    }
+
+    .item-page-choose {
+        background-color: yellow !important;
+        color: black !important;
+    }
+
+
+</style>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container-header">
+             <!-- menu -->
+            <div class="menu">
+                <ul class="nav">
+                    <li><a href="../collections/collection.html" class="nav-word">Bộ sưu tập</a>
+                        
+                    </li>
+                    <li><a href="#" class="nav-word">Sản phẩm</a>
+                        <ul class="sub-menu" id="sub-menu">
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-word">Sản phẩm mới</a></li>
+                    <li><a href="../bill.html" class="nav-word">Đơn Hàng</a>
+                    </li>
+                </ul>
+            </div> 
+
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../img/logo.webp" alt="">
+                    
+                </a>
+            </div>
+
+            <div class="header-right" id="a">
+                <div class="search">
+                    <input type="text" id="search" class="hidden">
+                    <div class="icon-search" onclick="showSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i> <br> 
+                        <span >TÌM KIẾM</span>
+                    </div>
+
+                    <div class="icon-use" id="icon-use">
+                        <!-- <a class="login-user" href="./login.html">
+                            <i class="fa-solid fa-user"></i> <br>
+                            <span>ĐĂNG NHẬP</span>
+                        </a> -->
+                    </div>
+                    
+                    <div class="icon-cart">
+                        <a href="../cardOrder.html">
+                            <i class="fa-solid fa-bag-shopping"><span id="total-order">0</span></i> 
+                            <br>
+                            <span>GIỎ HÀNG</span>
+                        </a>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main>
+        <div class="main-slider-item">
+            <div class="slider-item">
+            </div>
+        </div>
+
+        <div class="collection-body" id="collection-body">
+            
+        </div>
+
+        <!-- <div class="pagination">
+            <button onclick="changePage(0)" class="toPrevPage"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="btn" id="pagination">
+                <button id="page1">1</button>
+                <button id="page2">2</button>
+            </span>
+            <button onclick="changePage(1)" class="toNextPage"><i class="fa-solid fa-arrow-right"></i></button>
+        </div> -->
+
+        <!--Footer  -->
+        <footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #45526e"
+        
+        >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+    <!-- Section: Links -->
+    <section class="">
+    <!--Grid row-->
+    <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">
+            Truy cập nhanh
+        </h6>
+        <p>
+            Trang chủ
+        </p>
+        <p>Giới thiệu </p>
+        <p>Trung tâm trợ giúp</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="w-100 clearfix d-md-none" />
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">Về HIME’S Blog</h6>
+        <p>
+            <a class="text-white">Tuyển dụng</a>
+        </p>
+        <p>
+            <a class="text-white">Điều khoản dịch vụ </a>
+        </p>
+        <p>
+            <a class="text-white">Chính sách bảo mật</a>
+        </p>
+        <p>
+            <a class="text-white">Quy trình giải quyết khiếu nại</a>
+        </p>
+        </div>
+        <!-- Grid column -->
+
+        <hr class="w-100 clearfix d-md-none" />
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">
+            Về sản phẩm
+        </h6>
+        <p>
+            <a class="text-white">Hướng dẫn mua hàng</a>
+        </p>
+        <p>
+            <a class="text-white">Giao hàng & Nhận hàng</a>
+        </p>
+        <p>
+            <a class="text-white">Hướng dẫn đổi trả hàng</a>
+        </p>
+        
+        </div>
+
+        <!-- Grid column -->
+        <hr class="w-100 clearfix d-md-none" />
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h6>
+        <p><i class="fas fa-home mr-3"></i> Hotline & chat trực tuyến (24/7)</p>
+        <p><i class="fas fa-envelope mr-3"></i> himecskh@stripe-vn.com</p>
+        <p><i class="fas fa-phone mr-3"></i> + 024 6259 1551</p>
+        <p><i class="fas fa-print mr-3"></i> + 0987 769 594</p>
+        </div>
+        <!-- Grid column -->
+    </div>
+    <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+
+    <hr class="my-3">
+
+    <!-- Section: Copyright -->
+    <section class="p-3 pt-0">
+    <div class="row d-flex align-items-center">
+        <!-- Grid column -->
+        <div class="col-md-7 col-lg-8 text-center text-md-start">
+        <!-- Copyright -->
+        <div class="p-3">
+            © 2023 Copyright:
+            <a class="text-white" href="#"
+            >himevn.com</a
+            >
+        </div>
+        <!-- Copyright -->
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+        <!-- Facebook -->
+        <a
+            class="btn btn-outline-light btn-floating m-1"
+            class="text-white"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+
+        <!-- Twitter -->
+        <a
+            class="btn btn-outline-light btn-floating m-1"
+            class="text-white"
+            role="button"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+        <!-- Google -->
+        <a
+            class="btn btn-outline-light btn-floating m-1"
+            class="text-white"
+            role="button"
+            ><i class="fab fa-google"></i
+            ></a>
+
+        <!-- Instagram -->
+        <a
+            class="btn btn-outline-light btn-floating m-1"
+            class="text-white"
+            role="button"
+            ><i class="fab fa-instagram"></i
+            ></a>
+        </div>
+        <!-- Grid column -->
+        </div>
+        </section>
+    <!-- Section: Copyright -->
+        </div>
+    <!-- Grid container -->
+    </footer>
+    <!-- Footer -->
+    
+        <script src="../js/product-category.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 10px;
+}
+.nav>li{   /* Css này được áp dụng cho các thẻ <li> nằm ngay dưới thẻ <ul> có class là nav */
+    float: left; /* sẽ giúp các phần tử nằm trên cùng 1 hàng */
+    margin-right: 25px; /* sẽ giúp các phần tử cách nhau 15px về phía bên phải. */ 
+}
+.nav>li>a{
+    text-transform: uppercase;
+    color: #222222;
+    text-decoration: none; /* xoá gạch chân */
+}
+.nav li{
+    list-style: none;/* xoá dấu chấm đầu thẻ li */
+    position: relative;
+}
+.nav li a{
+    padding: 10px;
+    line-height: 20px;/* àm chiều cao của dòng tăng lên 20px giúp text nằm giữ dòng */
+    display: inline-block;/* sẽ giúp khóa hiển thị trên dòng, giúp các thuộc tính khác hoạt động tốt. */
+    text-decoration: none; /* xoá gạch chân */
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nav .sub-menu{
+    display: none ;
+    /* display: block ; */
+    position: absolute;
+    top: 5px;
+    left: 100%;
+    width: 200px;
+    background-color: #eee;
+    padding: 5px 20px;
+   
+}
+.nav li:hover>.sub-menu{
+    display: block;  
+}
+.nav>li>.sub-menu{
+    top: 42px;
+    left: 0;
+    text-decoration: none;
+}
+.nav .sub-menu1{
+    display: none ;
+    position: absolute;
+    top:0;
+    left: 100%;
+    width: 250px;
+    background-color: #eee;
+    padding: 5px 20px;
+}
+.nav>li>.sub-menu1{
+    top: 40px;
+    left: 0;
+}
+.nav li:hover>.sub-menu1{
+    display: block;
+}
+.menu{
+    padding: 0 15px 0 0;
+}
+.menu a{
+    position: relative;
+    font-weight: 500;
+}
+
+.nav > li:hover {
+    border-bottom: 2px solid #333;
+}
+
+.width-2 {
+    width: 250px !important;
+}
+.header-right{
+    width: 600px;
+    height: 40px;
+    display: flex
+}
+.icon{
+    position: relative;
+    display: flex;
+    margin-left: 20px;
+}
+.search{
+    position: relative;
+    display: flex;
+}
+#search{
+    /* border: none; */
+    /* outline: none; */
+    border-radius: 10px;
+    height: 100%;
+    width: 210px;
+    font-size: 16px;
+}
+.icon-search{
+    margin-left: 30px;
+    cursor: pointer;
+}
+.icon-search i{ 
+    margin-left: 25px;
+}
+.icon-use{
+    margin-left: 50px;
+    cursor: pointer;
+
+}
+.icon-use a{
+    color: #222222;
+    text-decoration: none;
+}
+.icon-use i{
+    margin-left: 35px;
+}
+.icon-cart{
+    margin-left: 50px;
+    cursor: pointer;
+}
+.icon-cart i{
+    margin-left: 30px;
+
+} 
+span{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* dùng cho Function showSearch() */
+.hidden {
+    opacity: 0;
+}
+/* ******************** */
+.formRegister{
+    width: 370px;
+    height: 450px;
+    border: none;
+    margin: 80px auto;
+
+}
+#formTitle{
+    text-align: center;
+}
+.inputRegister{
+    text-align: center;
+}
+.inputRegister input{
+    width: 100%;
+    height: 48px;
+    border: 0;
+    background: #F2F2F2;
+    color: #222;
+    padding: 0 20px;
+}
+.inputRegister button{
+    width: 100%;
+    height: 48px;
+    border: 0;
+    background:#222222;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.snackbar {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #eee;
+  color: #1a1c19;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 30px;
+  border: 2px solid #1a1c19;
+}
